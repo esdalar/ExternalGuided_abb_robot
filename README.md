@@ -32,7 +32,7 @@ git clone https://github.com/ros-industrial/abb.git
 
 ********************************
 
- 📌 The folowing package will needed to create in a separate workspace to avoid compilation problems:
+ 📌 _The folowing package will needed to create in a separate workspace to avoid compilation problems:_
 
 ```
 git clone https://github.com/ros-industrial/abb_libegm.git
