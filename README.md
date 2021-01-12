@@ -12,9 +12,10 @@ _Install the packages to be use in your workspace_
 ```
 sudo apt-get install ros-melodic-fiducials
 ```
+## Custom configuration ⚙️
 
 _If the robot is the same IRB6640-185kg/2.8m, just git clone this repo_
-_if no,  choose the robot to use._
+_if no,  choose the robot to use_ .
 _
 
 ```
