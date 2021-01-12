@@ -7,6 +7,14 @@ Take into account that the EGM only runs from RobotWare version 6.
 
 ## Installation 🔧
 
+Create the workspace to work in
+
+```
+$ mkdir -p ~/catkin_ws/src
+$ cd ~/catkin_ws/
+$ catkin_make
+```
+
 _Install the packages to be use in your workspace_
 
 ```
@@ -24,7 +32,7 @@ git clone https://github.com/ros-industrial/abb.git
 
 ********************************
 
-The folowing package will needed to create in a separate workspace to avoid compilation problems:
+ 📌 The folowing package will needed to create in a separate workspace to avoid compilation problems:
 
 ```
 git clone https://github.com/ros-industrial/abb_libegm.git
