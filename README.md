@@ -7,7 +7,7 @@ Take into account that the EGM only runs from RobotWare version 6.
 
 ## Installation 🔧
 
-Create the workspace to work in
+_Create the workspace_
 
 ```
 $ mkdir -p ~/catkin_ws/src
