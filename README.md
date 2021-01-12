@@ -23,8 +23,8 @@ sudo apt-get install ros-melodic-fiducials
 ## Custom configuration ⚙️
 
 _If the robot is the same IRB6640-185kg/2.8m, just git clone this repo_
-_if no,  choose the robot to use_ .
-_
+_if no,  choose the robot to use.
+
 
 ```
 git clone https://github.com/ros-industrial/abb.git
