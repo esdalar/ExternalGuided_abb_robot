@@ -1,0 +1,32 @@
+<launch>
+
+  <!--Gazebo empty world launch file-->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    	<arg name="debug" value="false" />
+    	<arg name="gui" value="true" />
+    	<arg name="paused" value="false"/>
+    	<arg name="use_sim_time" value="false"/>
+    	<arg name="headless" value="false"/>
+    	<arg name="verbose" value="true"/>
+  </include>
+
+  <!-- remap topics to conform to ROS-I specifications -->
+  <remap from="/arm_controller/follow_joint_trajectory" to="/joint_trajectory_action" />
+  <remap from="/arm_controller/state" to="/feedback_states" />
+  <remap from="/arm_controller/command" to="/joint_path_command"/>
+
+  <!--Robot Description from URDF-->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find abb_irb6640_support)/urdf/irb6640_185_280.xacro"/>
+  <param name="use_gui" value="true"/>
+  <!--Nodes-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model irb6640_185_280 -verbose" output="screen"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find abb_irb6640_support)/rviz/rviz_test.rviz" required="true"/>
+
+  <include file="$(find abb_irb6640_support)/launch/load_irb6640_185_280.launch" />
+
+  <!-- init and start Gazebo ros_control interface -->
+  <include file="$(find abb_irb6640_support)/launch/irb6640_185_280_control.launch"/>
+
+</launch>

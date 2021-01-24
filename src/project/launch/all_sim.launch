@@ -1,0 +1,6 @@
+
+
+<launch>
+  <include file="$(find project)/launch/gazebo_simulation.launch"/>
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find project)/rviz/simple.rviz" />
+</launch>

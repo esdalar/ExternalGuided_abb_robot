@@ -1,0 +1,38 @@
+<launch>
+
+  <!-- start simulated world -->
+  <include file="$(find project)/launch/myworld.launch"/>
+    <!--<arg name="world_name" value="worlds/empty.world"/>
+    <arg name="gui" value="true"/>
+    <arg name="paused" value="false"/>
+    <arg name="verbose" value="false" />
+  </include>-->
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find project)/urdf/abb_irb6640_185_280_sim.urdf.xacro'" />
+
+  <!-- spawn robot in gazebo-->
+  <node name="abb_irb6640_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model abb_irb6640_185_280" />
+  
+  <!-- load all controller params -->
+  <rosparam file="$(find project)/config/tfm_controllers.yaml" command="load" />
+
+  <!-- spawn joint state controller Este funciona!-->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/abb_tfm" args="joint_state_controller arm_controller" />
+  
+  <!-- joint state publisher to control the robot joints
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen">
+    <param name="use_gui" value="false"/>
+    <rosparam param="source_list" subst_value="true">["robot_egm"]</rosparam>
+  </node>-->
+
+  <!-- publish joint states in TF -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
+    <remap from="/joint_states" to="/abb_tfm/joint_states" />
+  </node>
+
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find project)/rviz/simple.rviz" />
+
+  <!-- Starts aruco_detect node -->
+  <include file="$(find project)/launch/aruco.launch"/>
+
+ </launch>

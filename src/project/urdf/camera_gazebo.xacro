@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+ <xacro:property name="camera_link" value="0.05" /> <!-- Size of square 'camera' box -->
+
+  <!-- connect robot with world -->
+  <joint name="world_to_camera_joint" type="fixed">
+    <parent link="world" />
+    <child link="camera_link" />
+    <origin xyz="1. 0 0.4" rpy="0 ${-pi*14.5/180} 0" />
+    <!--<origin xyz="1. 0 0.4" rpy="0 ${-pi*15./180} 0" />-->
+  </joint>
+
+
+  <!--<joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${camera_link} 0 ${height3 - axel_offset*2}" rpy="0 0 0"/>
+    <parent link="link3"/>
+    <child link="camera_link"/>
+  </joint>-->
+
+  <!-- CAMERA OPTICAL JOINT-->
+  <joint name="camera_optical_joint" type="fixed">
+    <!-- these values have to be these values otherwise the gazebo camera
+        image won't be aligned properly with the frame it is supposedly
+        originating from -->
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    <parent link="camera_link"/>
+    <child link="camera_link_optical"/>
+  </joint>
+
+  <link name="camera_link_optical">
+  </link>
+  <!-- CAMERA OPTICAL JOINT-->
+
+  <!-- Camera -->
+  <link name="camera_link">
+    <!--<collision>
+      <origin xyz="2 0 0.5" rpy="0 0 0" />
+      <geometry>
+        !<mesh filename="package://project/meshes/realsense_camera/meshes/realsense.dae"/>
+      <box size="${camera_link} ${camera_link} ${camera_link}"/>
+      </geometry>
+    </collision>-->
+
+    <visual>
+      <origin xyz="-0.03 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+      <geometry>
+        <!--<mesh filename="package://project/meshes/camera_Basler_Merged.dae"/>-->
+      <box size="${camera_link} ${camera_link} ${camera_link}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-3" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+</robot>
+  

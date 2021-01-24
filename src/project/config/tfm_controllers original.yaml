@@ -1,0 +1,42 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+arm_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - joint_1
+    - joint_2
+    - joint_3
+    - joint_4
+    - joint_5
+    - joint_6
+  gains:
+    joint_1: {p: 100000.0, i: 0.0, d: 200.0}
+    joint_2: {p: 1000000.0, i: 2000.0, d: 1000.0}
+    joint_3: {p: 500000.0, i: 200.0, d: 200.0}
+    joint_4: {p: 20000.0, i: 50.0, d: 10.0}
+    joint_5: {p: 10000.0, i: 50.0, d: 10.0}
+    joint_6: {p: 10000.0, i: 20.0, d: 10.0}
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+      joint_1: {trajectory: 0.1, goal: 0.1}
+      joint_2: {trajectory: 0.1, goal: 0.1}
+      joint_3: {trajectory: 0.1, goal: 0.1}
+      joint_4: {trajectory: 0.1, goal: 0.1}
+      joint_5: {trajectory: 0.1, goal: 0.1}
+      joint_6: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  25
+  action_monitor_rate: 10
+  
+joint_controller:
+  type: position_controllers/JointPositionController
+  joints:
+  - joint_1
+  - joint_2
+  - joint_3
+  - joint_4
+  - joint_5
+  - joint_6

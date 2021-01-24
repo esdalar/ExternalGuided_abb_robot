@@ -1,0 +1,11 @@
+<launch>
+
+  <!-- load the joint state controller -->
+  <rosparam file="$(find abb_irb6640_support)/config/joint_state_controller.yaml" command="load" />
+  <node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" />
+
+  <!-- load the arm controller -->
+  <rosparam file="$(find abb_irb6640_support)/config/irb6640_185_280_arm_controller.yaml" command="load" />
+  <node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller" />
+
+</launch>

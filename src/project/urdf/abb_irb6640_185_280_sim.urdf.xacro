@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<robot name="abb_irb6640_185_280" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find project)/urdf/irb6640_185_280_mass.xacro"/>
+  <xacro:include filename="$(find project)/urdf/camera.plugins.xacro"/>
+  <xacro:include filename="$(find project)/urdf/camera_gazebo.xacro"/>
+
+    <!-- connect robot with world -->
+    <link name="world" />
+    <joint name="world_to_base_link_joint" type="fixed">
+      <parent link="world" />
+      <child link="base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <!-- get base ABB IRB6640_185_280 model -->
+    <xacro:abb_irb6640_185_280 prefix="" />
+
+    <!-- transmission list -->
+    <transmission name="tran1">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_1">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor1">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran2">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_2">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor2">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran3">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_3">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor3">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran4">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_4">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor4">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran5">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_5">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor5">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran6">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_6">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor6">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran_joint_cylinder">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_cylinder">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_joint_cylinder">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <transmission name="tran_joint_cylinder_piston">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_cylinder_piston">
+	<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="motor_joint_cylinder_piston">
+	<mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+    <!-- end of transmission list -->
+
+    <!-- gazebo link config -->
+    <gazebo reference="base_link">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_1">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_2">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_3">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_4">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_5">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_6">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_cylinder">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+    <gazebo reference="link_piston">
+      <selfCollide>False</selfCollide>
+    </gazebo>
+
+    <gazebo reference="joint_1">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_2">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_3">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_4">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_5">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_6">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_cylinder">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <gazebo reference="joint_cylinder_piston">
+      <provideFeedback>true</provideFeedback>
+    </gazebo>
+    <!-- gazebo reference="joint_piston">
+      <provideFeedback>true</provideFeedback>
+    </gazebo
+
+    <gazebo>
+        <joint name="joint_piston" type="revolute">
+            <pose>-0.22 0 -0.0672 0 0 0</pose>
+            <parent>link_piston</parent>
+            <child>link_2</child>
+            <axis>
+                <xyz>0 1 0</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <damping>0.02</damping>
+                    <friction>0.1</friction>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+</gazebo> -->
+    <!-- end additional joint -->
+
+    <!-- ros_control plugin -->
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>/abb_tfm</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
+
+</robot>

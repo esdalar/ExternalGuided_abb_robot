@@ -1,0 +1,79 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='carToyota_aruco'>
+    <model name='aruco_marker'>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <mass>0.001</mass>
+          <inertia>
+            <ixx>3.75e-06</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1.875e-06</iyy>
+            <iyz>0</iyz>
+            <izz>1.875e-06</izz>
+          </inertia>
+        </inertial>
+        <visual name='front_visual'>
+          <pose frame=''>5e-05 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.0001 0.15 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://aruco_marker/materials/scripts</uri>
+              <uri>model://aruco_marker/materials/textures</uri>
+              <name>Marker</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='rear_visual'>
+          <pose frame=''>-5e-05 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.0001 0.15 0.15</size>
+            </box>
+          </geometry>
+        </visual>
+        <collision name='collision'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.0001 0.15 0.15</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose frame=''>0.997484 -0.476205 0.14868 0 0 -1.60596</pose>
+    </model>
+    <model name='hatchback'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <pose frame=''>0 0 0 0 -0 1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>0.0254 0.0254 0.0254</scale>
+              <uri>model://hatchback/meshes/hatchback.obj</uri>
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>0.0254 0.0254 0.0254</scale>
+              <uri>model://hatchback/meshes/hatchback.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      <pose frame=''>-0.997484 0.476204 -0.148681 0 -0 0</pose>
+    </model>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>

@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find project)/urdf/inertias.urdf.xacro" />
+
+  <xacro:macro name="abb_irb6640_185_280" params="prefix">
+    <!-- link list -->
+    <link name="${prefix}base_link">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/base_link.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/base_link.dae"/>
+        </geometry>
+        <material name="yellow">
+          <color rgba="1 1 0 1"/>
+        </material>
+      </visual>
+      <inertial>
+        <mass value="100" />
+        <origin xyz="0 0 0.1" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.8" y_dim="0.8" z_dim="0.15" mass="100" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_1">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/link_1.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/link_1.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="60" />
+        <origin xyz="0 0.2 -0.15" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.8" y_dim="0.3" z_dim="0.6" mass="60" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_2">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/link_2.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/link_2.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="40" />
+        <origin xyz="0 -0.30 0.5" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.3" y_dim="0.2" z_dim="1.2" mass="40" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_3">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/link_3.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/link_3.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="25" />
+        <origin xyz="0 0.05 0.12" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.4" y_dim="0.4" z_dim="0.4" mass="25" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_4">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/link_4.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/link_4.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="25" />
+        <origin xyz="0.8 0 0" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="1.2" y_dim="0.2" z_dim="0.2" mass="25" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_5">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/link_5.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/link_5.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="10" />
+        <origin xyz="0.05 0 0.0" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.25" y_dim="0.15" z_dim="0.15" mass="10" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_6">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/link_6.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/link_6.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="7" />
+        <origin xyz="0 0 0.0" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.1" y_dim="0.15" z_dim="0.15" mass="7" />
+      </inertial>
+    </link>
+    <link name="${prefix}tool0"/>
+
+    <!--Cylinder and piston -->
+    <link name="${prefix}link_cylinder">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/cylinder_link.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/cylinder_link.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="10" />
+        <origin xyz="0 -0.2 0.0" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.4" y_dim="0.3" z_dim="0.3" mass="10" />
+      </inertial>
+    </link>
+    <link name="${prefix}link_piston">
+      <collision name="collision">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/collision/piston_link.stl"/>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh filename="package://abb_irb6640_support/meshes/irb6640_185_280/visual/piston_link.dae"/>
+        </geometry>
+        <material name="yellow"/>
+      </visual>
+      <inertial>
+        <mass value="80" />
+        <origin xyz="-0.25 -0.2 0.0" rpy="0 0 0"/>
+        <xacro:box_inertia x_dim="0.4" y_dim="0.05" z_dim="0.05" mass="80" />
+      </inertial>
+    </link>
+    <!-- end of link list -->
+
+    <!-- joint list -->
+    <joint type="revolute" name="${prefix}joint_1">
+      <origin xyz="0 0 0.780" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <limit effort="99999" lower="-2.967" upper="2.967" velocity="1.7453"/>
+      <dynamics damping="0.04" friction="0.3"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_2">
+      <origin xyz="0.320 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <limit effort="99999" lower="-1.134" upper="1.4855" velocity="1.5707"/>
+      <dynamics damping="0.04" friction="0.3"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_3">
+      <origin xyz="0 0 1.075" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <limit effort="99999" lower="-3.142" upper="1.222" velocity="1.5707"/>
+      <dynamics damping="0.04" friction="0.3"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_4">
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <limit effort="99999" lower="-5.236" upper="5.236" velocity="2.9671"/>
+      <dynamics damping="0.02" friction="0.1"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_5">
+      <origin xyz="1.392 0 0 " rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <limit effort="99999" lower="-2.094" upper="2.094" velocity="2.4435"/>
+      <dynamics damping="0.02" friction="0.1"/>
+    </joint>
+    <joint type="revolute" name="${prefix}joint_6">
+      <origin xyz="0.2 0 0 " rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <limit effort="99999" lower="-6.283" upper="6.283" velocity="3.3161"/>
+      <dynamics damping="0.02" friction="0.1"/>
+    </joint>
+    <joint type="fixed" name="${prefix}joint_6-tool0">
+      <parent link="${prefix}link_6"/>
+      <child link="${prefix}tool0"/>
+      <origin xyz="0 0 0" rpy="0 1.57079632679 0"/>
+    </joint>
+    <!-- passive joint -->
+    <joint type="continuous" name="${prefix}joint_cylinder">
+      <origin xyz="-0.3647 0 -0.1455" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_cylinder"/>
+      <dynamics effort="9999" velocity="999" damping="0.02" friction="0.05"/>
+    </joint>
+    <!-- passive joint -->
+    <!-- this joint will be added in gazebo, since no closed loop can be parsed correctly in ROS -->
+    <!-- joint type="continuous" name="${prefix}joint_piston">
+      <origin xyz="-0.22 0 -0.0672" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <parent link="${prefix}link_piston"/>
+      <child link="${prefix}link_2"/>
+      <dynamics damping="0.04" friction="0.1"/>
+    </joint-->
+    <!-- passive joint -->
+    <joint type="prismatic" name="${prefix}joint_cylinder_piston">
+      <origin xyz="0.465 0.000 0.078" rpy="0 0 0"/>
+      <axis xyz="0.465 0.000 0.078"/>
+      <parent link="${prefix}link_cylinder"/>
+      <child link="${prefix}link_piston"/>
+      <limit effort="99999" velocity="999" lower="0.0" upper="0.5"/>
+      <dynamics damping="0.04" friction="0.1"/>
+    </joint>
+    <!-- end of joint list -->
+
+    <!-- ROS base_link to ABB World Coordinates transform -->
+    <link name="${prefix}base" />
+    <joint name="${prefix}base_link-base" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}base"/>
+    </joint>
+  </xacro:macro>
+</robot>

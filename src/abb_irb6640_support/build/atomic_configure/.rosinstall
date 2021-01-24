@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/gengiro/tfm_test_ws/src/abb_irb6640_support/build/devel/setup.sh

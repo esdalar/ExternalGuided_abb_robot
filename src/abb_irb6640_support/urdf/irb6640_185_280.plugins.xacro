@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+  <!--Gazebo Camera Plugin-->
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="abb_irb6640_185_280">
+  <!-- Add a camera in the URDF -->
+  <xacro:property name="camera_yaw_angle" value="${pi/2}" />  
+  <xacro:property name="camera_roll_angle" value="${-pi/2 - pi/6}" />  
+  <xacro:property name="camera_depth" value="0.05" />
+  <xacro:property name="camera_height" value="0.07" />
+  <xacro:property name="camera_length" value="0.15" />
+  <xacro:property name="camera_z_offset" value="0.01" />
+  <xacro:property name="camera_origin_x" value="0.00" />
+  <xacro:property name="camera_origin_y" value="2.00" />
+  <xacro:property name="camera_origin_z" value="0.50" />
+  <!-- Size of square 'camera' box -->
+  <xacro:property name="camera_x" value="2" />
+  <!-- x position of 'camera' box -->
+  <xacro:property name="camera_y" value="0.5" />
+  <!-- y position of 'camera' box -->
+  <xacro:property name="camera_z" value="0.5" />
+  <!-- z position of 'camera' box -->
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${camera_origin_x} ${camera_origin_y} ${camera_origin_z}" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="camera_link"/>
+  </joint>
+  <!-- Camera -->
+  <link name="camera_link">
+    <collision>
+      <origin xyz="0 0 ${-1 * camera_depth - camera_z_offset}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${camera_length} ${camera_height} ${camera_depth}"/>
+      </geometry>
+    </collision>
+    <visual>
+      <origin xyz="0 0 ${-1 * camera_depth - camera_z_offset}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${camera_length} ${camera_height} ${camera_depth}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30.0</updateRate>
+        <cameraName>camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+</robot>

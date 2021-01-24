@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>egm_interface</name>
+  <version>0.0.0</version>
+  <description>The EGM interface for the TFM</description>
+
+  <maintainer email="gengiro@todo.com">gengiro</maintainer>
+
+  <license>BSD 3-Clause</license>
+
+  <author email="gengiro@todo.com">gengiro</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>abb_libegm</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+</package>

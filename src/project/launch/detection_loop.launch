@@ -1,0 +1,5 @@
+<!-- Run the aruco detection feedback loop nodes -->
+<launch>
+    <include file="$(find project)/launch/tfm.launch"/>
+    <node type="egm_path" name="egm_path" pkg="egm_path" args="" />
+</launch>
