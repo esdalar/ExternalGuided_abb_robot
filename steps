@@ -1,0 +1,9 @@
+ws:
+$ catkin_make_isolated --pkg abb_libegm --only-pkg-with-deps abb_libegm --install
+$ catkin_make_isolated --pkg egm_interface
+$ catkin_make
+$ cd devel/setup.bash
+
+$ roslaunch project simulation.launch
+$ rosrun egm_interface egm_interface
+$ rosrun egm_path egm_path
