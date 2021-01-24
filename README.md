@@ -1,7 +1,7 @@
 # ROS commanded ABB robot using External Guided Motion (EGM)
 Repository to command an ABB robot or virtual robot controller of RobotStudio with a external simulated sensor using ROS by the interface EGM "External Guided Motion".
 
-## Real ABB robot/vitrual controller RobotWare options 📄
+## Real ABB robot/Virtual Controller RobotWare options 📄
 Take into account that the EGM only runs from RobotWare version 6. 
 To run this application, the robot will need the opctions:
 
@@ -59,7 +59,7 @@ _if no,  choose the robot to use._
 $ git clone https://github.com/ros-industrial/abb.git
 ```
 
-## Connect to the real robot or Virtual controller of RobotStudio and run the application  🚀
+## Connect to the Real ABB robot/Virtual Controller of RobotStudio and run the application  🚀
 ```
 $ roslaunch project simulation.launch
 $ rosrun egm_interface egm_interface
