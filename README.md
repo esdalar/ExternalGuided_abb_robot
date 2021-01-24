@@ -15,16 +15,16 @@ $ cd ~/catkin_ws/
 $ catkin_make
 ```
 
- 📌 _The folowing package will needed to create in a separate workspace to avoid compilation problems:_
+ 📌 _The folowing package is needed to create in a separate workspace to avoid compilation problems:_
 
 ```
 $ git clone https://github.com/ros-industrial/abb_libegm.git
+$ catkin_make_isolated --pkg abb_libegm --only-pkg-with-deps abb_libegm --install
 ```
 _Install the packages for the application_
 
 ```
 $ sudo apt-get install ros-melodic-fiducials
-$ catkin_make_isolated --pkg abb_libegm --only-pkg-with-deps abb_libegm --install
 $ catkin_make_isolated --pkg egm_interface
 $ catkin_make
 $ cd devel/setup.bash
