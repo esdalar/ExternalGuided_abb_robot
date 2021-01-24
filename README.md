@@ -10,14 +10,18 @@ Take into account that the EGM only runs from RobotWare version 6.
 _Create 2 workspace: one for the application core and the other for "abb_libegm" package_
 
 ```
-$ mkdir -p ~/catkin_ws/src
-$ cd ~/catkin_ws/
+$ mkdir -p ~/catkin_wsApp/src
+$ cd ~/catkin_wsApp/
 $ catkin_make
 ```
 
  📌 _The folowing package is needed to create in a separate workspace to avoid compilation problems:_
 
 ```
+$ mkdir -p ~/catkin_wsLibEgm/src
+$ cd ~/catkin_wsLibEgm/
+$ catkin_make
+
 $ git clone https://github.com/ros-industrial/abb_libegm.git
 $ catkin_make_isolated --pkg abb_libegm --only-pkg-with-deps abb_libegm --install
 ```
