@@ -14,6 +14,12 @@ $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/
 $ catkin_make
 ```
+
+ 📌 _The folowing package will needed to create in a separate workspace to avoid compilation problems:_
+
+```
+$ git clone https://github.com/ros-industrial/abb_libegm.git
+```
 _Install the packages for the application_
 
 ```
@@ -32,16 +38,9 @@ _if no,  choose the robot to use._
 
 
 ```
-git clone https://github.com/ros-industrial/abb.git
+$ git clone https://github.com/ros-industrial/abb.git
 ```
 
-********************************
-
- 📌 _The folowing package will needed to create in a separate workspace to avoid compilation problems:_
-
-```
-git clone https://github.com/ros-industrial/abb_libegm.git
-```
 ## Connect to the real robot or Virtual controller of RobotStudio and run the application  🚀
 ```
 $ roslaunch project simulation.launch
