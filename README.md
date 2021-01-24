@@ -14,12 +14,17 @@ $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/
 $ catkin_make
 ```
-
-_Install the packages to be use in your workspace_
+_Install the packages for the application_
 
 ```
-sudo apt-get install ros-melodic-fiducials
+$ sudo apt-get install ros-melodic-fiducials
+$ catkin_make_isolated --pkg abb_libegm --only-pkg-with-deps abb_libegm --install
+$ catkin_make_isolated --pkg egm_interface
+$ catkin_make
+$ cd devel/setup.bash
+
 ```
+
 ## Custom configuration ⚙️
 
 _If the robot is the same IRB6640-185kg/2.8m, just git clone this repo_
@@ -37,7 +42,13 @@ git clone https://github.com/ros-industrial/abb.git
 ```
 git clone https://github.com/ros-industrial/abb_libegm.git
 ```
+## Connect to the real robot or Virtual controller of RobotStudio and run the application  🚀
+```
+$ roslaunch project simulation.launch
+$ rosrun egm_interface egm_interface
+$ rosrun egm_path egm_path
 
+```
 
 
 
