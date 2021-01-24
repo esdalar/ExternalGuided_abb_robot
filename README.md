@@ -7,7 +7,7 @@ Take into account that the EGM only runs from RobotWare version 6.
 
 ## Installation 🔧
 
-_Create the workspace_
+_Create 2 workspace: one for the application core and the other for "abb_libegm" package_
 
 ```
 $ mkdir -p ~/catkin_ws/src
