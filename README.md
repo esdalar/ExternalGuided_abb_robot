@@ -6,8 +6,8 @@ Take into account that the EGM only runs from RobotWare version 6.
 To run this application, the robot will need the opctions:
 
 - EGM External Guided Motion [689-1]
-- PC Interface[616-1]
-- Recommended but not needed --> Multitasking[623-1]
+- PC Interface [616-1]
+- Recommended but not needed --> Multitasking [623-1]
 
 ## Extra documentation 📖
 
