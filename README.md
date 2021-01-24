@@ -1,11 +1,21 @@
 # ExternalGuided_abb_robot
 Repository to command an ABB robot or virtual robot controller of RobotStudio with a external simulated sensor using ROS by the interface EGM "External Guided Motion".
 
+## Real robot or vitrua controller RobotWare options 📄
 Take into account that the EGM only runs from RobotWare version 6. 
+To run this application, the robot will need the opctions:
+- EGM External Guided Motion [689-1]
+- PC Interface[616-1]
+- Recommended but not needed --> Multitasking[623-1]
+## Extra documentation 📖
+
+Take also a look to the following ABB manuals to program the application in the ABB robot:
+https://abb.sluzba.cz/Pages/Public/IRC5UserDocumentationRW6/en/3HAC050798%20AM%20Controller%20software%20IRC5-en.pdf 
+
 
 ![ROS external guiding of a virtual controller robot using EGM](https://github.com/esdalar/ExternalGuided_abb_robot/blob/main/external_guided_app_ROS_RobotStudio.png)
 
-## Installation 🔧
+## ROS Installation 🔧
 
 _Create 2 workspace: one for the application core and the other for "abb_libegm" package_
 
