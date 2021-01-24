@@ -1,4 +1,4 @@
-# ExternalGuided_abb_robot
+# ROS commanded ABB robot using External Guided Motion (EGM)
 Repository to command an ABB robot or virtual robot controller of RobotStudio with a external simulated sensor using ROS by the interface EGM "External Guided Motion".
 
 ## Real robot or vitrual controller RobotWare options 📄
